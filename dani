@@ -4,9 +4,9 @@
 _get_ziplink () {
     local regex
     regex='(https?)://github.com/.+/.+'
-    if [[ $UPSTREAM_REPO == "zel" ]]
+    if [[ $UPSTREAM_REPO == "E9N99" ]]
     then
-        echo "aHR0cHM6Ly9naXRodWIuY29tL1pUaG9uLUFyL1pUWi9hcmNoaXZlL3plbHouemlw" | base64 -d
+        echo "aHR0cHM6Ly9naXRodWIuY29tL0U5Tjk5L1RFU1RULyBhcmNoaXZlL21hc3Rlci56aXA=" | base64 -d
     elif [[ $UPSTREAM_REPO =~ $regex ]]
     then
         if [[ $UPSTREAM_REPO_BRANCH ]]
@@ -16,7 +16,7 @@ _get_ziplink () {
             echo "${UPSTREAM_REPO}/archive/master.zip"
         fi
     else
-        echo "aHR0cHM6Ly9naXRodWIuY29tL1pUaG9uLUFyL1pUWi9hcmNoaXZlL3plbHouemlw" | base64 -d
+        echo "aHR0cHM6Ly9naXRodWIuY29tL0U5Tjk5L1RFU1RULyBhcmNoaXZlL21hc3Rlci56aXA=" | base64 -d
     fi
 }
 
@@ -24,14 +24,14 @@ _get_repolink () {
     local regex
     local rlink
     regex='(https?)://github.com/.+/.+'
-    if [[ $UPSTREAM_REPO == "zel" ]]
+    if [[ $UPSTREAM_REPO == "E9N99" ]]
     then
-        rlink=`echo "aHR0cHM6Ly9naXRodWIuY29tL1pUaG9uLUFyL1pUWi5naXQ=" | base64 -d`
+        rlink=`echo "aHR0cHM6Ly9naXRodWIuY29tL0U5Tjk5L3Rlc3R0LmdpdA==" | base64 -d`
     elif [[ $UPSTREAM_REPO =~ $regex ]]
     then
         rlink=`echo "${UPSTREAM_REPO}"`
     else
-        rlink=`echo "aHR0cHM6Ly9naXRodWIuY29tL1pUaG9uLUFyL1pUWi5naXQ=" | base64 -d`
+        rlink=`echo "aHR0cHM6Ly9naXRodWIuY29tL0U5Tjk5L3Rlc3R0LmdpdA==" | base64 -d`
     fi
     echo "$rlink"
 }
@@ -44,7 +44,7 @@ _run_python_code() {
 _run_catpack_git() {
     $(_run_python_code 'from git import Repo
 import sys
-OFFICIAL_UPSTREAM_REPO = "https://github.com/ZThon-Ar/ZTZ"
+OFFICIAL_UPSTREAM_REPO = "https://github.com/E9N99/TESTT"
 ACTIVE_BRANCH_NAME = "master"
 repo = Repo.init()
 origin = repo.create_remote("temponame", OFFICIAL_UPSTREAM_REPO)
@@ -68,7 +68,7 @@ repo.heads[ACTIVE_BRANCH_NAME].checkout(True) ')
 
 _set_bot () {
     local zippath
-    zippath="zelz.zip"
+    zippath="Matrix.zip"
     echo "⌭ جاري تنزيل اكواد السورس ⌭"
     wget -q $(_get_ziplink) -O "$zippath"
     echo "⌭ تفريغ البيانات ⌭"
@@ -87,7 +87,7 @@ _set_bot () {
     echo "
 
     "
-    python3 -m zelz
+    python3 -m Matrix
 }
 
 _set_bot
